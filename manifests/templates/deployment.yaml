@@ -1,0 +1,24 @@
+---
+# Source: helm for kubernetes/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ting
+  labels:
+    app: ting
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ting
+  template:
+    metadata:
+      labels:
+        app: ting
+    spec:
+      containers:
+        - name: ting
+          image: docker.io/phengbunath/ting:1
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
