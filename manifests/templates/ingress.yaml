@@ -1,0 +1,21 @@
+---
+# Source: helm for kubernetes/templates/ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ting                  # Ingress name
+  labels:
+    app: ting
+spec:
+  ingressClassName: nginx   # Optional ingressClass
+  rules:
+    - host: "ting.smartops.space"
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: ting               # Links to Service name dynamically
+                port:
+                  number: 8080  # Links to service port dynamically
